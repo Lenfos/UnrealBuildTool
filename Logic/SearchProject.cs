@@ -24,6 +24,17 @@ public class SearchProject
                 proj.UnrealVersion = engineAssociation.GetString() ?? string.Empty;
             }
             
+            if (root.TryGetProperty("Plugins", out JsonElement plugins))
+            {
+                foreach (JsonElement plugin in plugins.EnumerateArray())
+                {
+                    if (plugin.TryGetProperty("Name", out JsonElement pluginName))
+                    {
+                        proj.Plugins.Add(pluginName.GetString() ?? string.Empty);
+                    }
+                }
+            }
+            
             projects.Add(proj);
         }
         
@@ -40,6 +51,17 @@ public class SearchProject
         if (root.TryGetProperty("EngineAssociation", out JsonElement engineAssociation))
         {
             proj.UnrealVersion = engineAssociation.GetString() ?? string.Empty;
+        }
+
+        if (root.TryGetProperty("Plugins", out JsonElement plugins))
+        {
+            foreach (JsonElement plugin in plugins.EnumerateArray())
+            {
+                if (plugin.TryGetProperty("Name", out JsonElement pluginName))
+                {
+                    proj.Plugins.Add(pluginName.GetString() ?? string.Empty);
+                }
+            }
         }
 
         return proj;

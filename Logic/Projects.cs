@@ -7,6 +7,7 @@ public class Projects
     private string name;
     private string path;
     private string unrealVersion;
+    private List<string> plugins;
 
     #endregion
 
@@ -30,6 +31,12 @@ public class Projects
         set => unrealVersion = value;
     }
 
+    public List<string> Plugins
+    {
+        get => plugins;
+        set => plugins = value;
+    }
+    
     #endregion
 
     #region Constructors
@@ -39,6 +46,7 @@ public class Projects
         this.Name = name;
         this.Path = path;
         this.UnrealVersion = name;
+        this.Plugins = new List<string>();
     }
 
     public Projects(Projects projects)
@@ -46,6 +54,7 @@ public class Projects
         this.Name = projects.Name;
         this.Path = projects.Path;
         this.UnrealVersion = projects.UnrealVersion;
+        this.Plugins = projects.Plugins;
     }
 
     #endregion
@@ -64,6 +73,15 @@ public class Projects
 
     public override string ToString()
     {
-        return $"Name: {this.Name}, Path: {this.Path}, UnrealVersion: {this.UnrealVersion}";
+        string res = $"\nName: {this.Name}, \nPath: {this.Path}, \nUnrealVersion: {this.UnrealVersion}, \nPlugins : [\n";
+
+        foreach (string plugin in this.Plugins)
+        {
+            res += $"   {plugin}, \n";
+        }
+
+        res += "]";
+        
+        return res;
     }
 }
