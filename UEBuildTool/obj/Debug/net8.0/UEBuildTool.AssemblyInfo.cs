@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UEBuildTool")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+259f764820f838e0035045b4afa38c431881823c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bb87e94a0ddc692c51d349bc968001ffe86278e")]
 [assembly: System.Reflection.AssemblyProductAttribute("UEBuildTool")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UEBuildTool")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

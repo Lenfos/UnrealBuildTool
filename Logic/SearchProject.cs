@@ -50,7 +50,7 @@ public class SearchProject
         JsonElement root = json.RootElement;
         if (root.TryGetProperty("EngineAssociation", out JsonElement engineAssociation))
         {
-            proj.UnrealVersion = engineAssociation.GetString() ?? string.Empty;
+            proj.UnrealVersion = engineAssociation.GetString() ?? "From Source";
         }
 
         if (root.TryGetProperty("Plugins", out JsonElement plugins))
@@ -65,6 +65,11 @@ public class SearchProject
         }
 
         return proj;
+    }
+
+    public static string GetProjectsName(string path)
+    {
+        return Path.GetFileNameWithoutExtension(path);
     }
 
 }

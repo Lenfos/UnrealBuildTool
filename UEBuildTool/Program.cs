@@ -6,8 +6,12 @@ static class MainClass
 {
     public static void Main(string[] args)
     {
-        Projects projs =  SearchProject.GetProjects(@"C:\Users\pierr\OneDrive\Documents\Unreal Projects\travailleconnard\travailleconnard.uproject");
+        Projects projs =  SearchProject.GetProjects(@"C:\UnrealEngine-5.5\TestProject\TestProject.uproject");
+        string path = @"C:\UnrealEngine-5.5\Engine\Build\BatchFiles\Build.bat";
 
-        Console.WriteLine(projs);
+        string projectPath =
+            @"C:\UnrealEngine-5.5\TestProject\TestProject.uproject";
+
+        SearchProject.GetProjectsName(projectPath);
     }
 }
