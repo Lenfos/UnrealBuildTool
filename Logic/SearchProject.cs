@@ -1,17 +1,47 @@
 using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace Logic;
 
 public class SearchProject
 {
 
-    public static List<Projects> GetAllProjects(string path = @"c:\")
+    [SuppressMessage("ReSharper.DPA", "DPA0002: Excessive memory allocations in SOH")]
+    [SuppressMessage("ReSharper.DPA", "DPA0003: Excessive memory allocations in LOH", MessageId = "type: System.String; size: 434MB")]
+    public static void GetAllProjects(string path = @"c:\")
     {
         List<Projects> projects = new List<Projects>();
+        
+        ProcessStartInfo psi = new ProcessStartInfo
+        {
+            FileName = "cmd.exe",
+            Arguments = $"/c dir \"{path}\" /s /b /a *.uproject",
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
 
-        string[] files = Directory.GetFiles(path, "*.uproject", SearchOption.AllDirectories);
+        Process process = new Process { StartInfo = psi };
+        
+        Console.WriteLine($"Searching through directory. Warning : It can take some time to search");
+        
+        process.Start();
+
+        string output = process.StandardOutput.ReadToEnd();
+        process.WaitForExit();
+        
+        if (string.IsNullOrEmpty(output))
+        {
+            Console.WriteLine("No .uproject files found.");
+            return;
+        }
+        
+        string[] files = GetProjectPaths(output);
         foreach (string iFile in files)
         {
             Projects proj = new Projects(Path.GetFileNameWithoutExtension(iFile), iFile);
@@ -19,6 +49,12 @@ public class SearchProject
             string jsonFile = File.ReadAllText(iFile);
             JsonDocument json = JsonDocument.Parse(jsonFile);
             JsonElement root = json.RootElement;
+            
+            if (root.ValueKind == JsonValueKind.Number)
+            {
+                continue; 
+            }
+            
             if (root.TryGetProperty("EngineAssociation", out JsonElement engineAssociation))
             {
                 proj.UnrealVersion = engineAssociation.GetString() ?? string.Empty;
@@ -37,11 +73,15 @@ public class SearchProject
             
             projects.Add(proj);
         }
-        
-        return projects;
+
+        projects = SortProject(projects);
+        foreach (Projects iProj in projects)
+        {
+            Console.WriteLine(iProj.ToString());
+        }
     }
 
-    public static Projects GetProjects(string path)
+    public static void GetProjects(string path)
     {
         Projects proj = new Projects(Path.GetFileNameWithoutExtension(path), path);
         
@@ -50,7 +90,7 @@ public class SearchProject
         JsonElement root = json.RootElement;
         if (root.TryGetProperty("EngineAssociation", out JsonElement engineAssociation))
         {
-            proj.UnrealVersion = engineAssociation.GetString() ?? "From Source";
+            proj.UnrealVersion = engineAssociation.GetString() == "" ? "From Source" : engineAssociation.GetString() ?? "From Source";
         }
 
         if (root.TryGetProperty("Plugins", out JsonElement plugins))
@@ -64,12 +104,45 @@ public class SearchProject
             }
         }
 
-        return proj;
+        Console.WriteLine(proj.ToString());
     }
 
     public static string GetProjectsName(string path)
     {
         return Path.GetFileNameWithoutExtension(path);
+    }
+    
+    private static string[] GetProjectPaths(string output)
+    {
+        List<string> paths = new List<string>();
+        
+        string pattern = @"([A-Za-z]:\\(?:[\w\\]+)*\.uproject)";
+        Regex regex = new Regex(pattern);
+
+        MatchCollection matches = regex.Matches(output);
+        foreach (Match match in matches)
+        {
+            paths.Add(match.Value); 
+        }
+
+        return paths.ToArray();
+    }
+
+    private static List<Projects> SortProject(List<Projects> projects)
+    {
+        List<Projects> resProjects = new List<Projects>();
+        List<string> paths = new List<string>();
+
+        foreach (Projects iProj in projects)
+        {
+            if (!paths.Contains(iProj.Path))
+            {
+                paths.Add(iProj.Path);
+                resProjects.Add(iProj);
+            }
+        }
+        
+        return resProjects;
     }
 
 }
