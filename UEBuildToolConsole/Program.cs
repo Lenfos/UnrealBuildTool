@@ -19,7 +19,7 @@ static class MainClass
         if (path == "-h")
         {
             Console.WriteLine(
-                "Don't forget the path to your project as a first argument for the 3 first options. There is 4 options available : \n 1. show-infos : show project detail from .uproject \n 2. build : Build uproject with UBT \n 3. package : Package the project with UAT. Warning : Need to have a third argument with the target path \n 4. all-projects : Show all the projects found in the disk. 3rd argument is optional : Path from where to start searching (default : c:/ ");
+                "Don't forget the path to your project as a first argument for the 3 first options. There is 4 options available : \n 1. show-infos : show project detail from .uproject \n 2. build : Build uproject with UBT \n 3. package : Package the project with UAT. Warning : Need to have a third argument with the target path \n 4. all-projects : Show all the projects found in the disk. 3rd argument is optional : Path from where to start searching (default : c:/) ");
                 return;
         }
         else if (path == "all-projects")

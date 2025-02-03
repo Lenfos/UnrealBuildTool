@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnrealBuildTool", "UnrealBuildTool\UnrealBuildTool.csproj", "{95D2E871-88A0-4628-9C4A-29B4C669E34E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnrealBuildToolGUI", "UnrealBuildToolGUI\UnrealBuildToolGUI.csproj", "{95D2E871-88A0-4628-9C4A-29B4C669E34E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{21D3F27B-810B-47FC-8C77-63C83FD4E2ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UEBuildTool", "UEBuildTool\UEBuildTool.csproj", "{09936BD9-9792-4075-A823-63EF19E3E45B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UEBuildToolConsole", "UEBuildToolConsole\UEBuildToolConsole.csproj", "{09936BD9-9792-4075-A823-63EF19E3E45B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

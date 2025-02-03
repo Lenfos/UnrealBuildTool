@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UnrealBuildTool")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccb1982214c6d6c3dc1331102c40a3224c51596a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9bdb487af93f553634e734892d019f156170728")]
 [assembly: System.Reflection.AssemblyProductAttribute("UnrealBuildTool")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UnrealBuildTool")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

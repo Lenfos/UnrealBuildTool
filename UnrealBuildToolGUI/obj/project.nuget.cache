@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3WQia+/+1kQ=",
+  "dgSpecHash": "7554Eucgrk0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\pierr\\RiderProjects\\UnrealBuildTool\\UnrealBuildTool\\UnrealBuildTool.csproj",
+  "projectFilePath": "C:\\Users\\pierr\\RiderProjects\\UnrealBuildTool\\UnrealBuildToolGUI\\UnrealBuildToolGUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pierr\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.8\\microsoft.net.illink.tasks.8.0.8.nupkg.sha512",
     "C:\\Users\\pierr\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.8\\microsoft.netcore.app.runtime.win-x64.8.0.8.nupkg.sha512",
