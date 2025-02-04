@@ -1,83 +1,85 @@
 
-# Projet de gestion Unreal Engine
+# Unreal Engine Build Tool
 
-Ce programme permet de gérer les projets Unreal Engine en offrant plusieurs fonctionnalités via la ligne de commande. Vous pouvez afficher des informations sur un projet, le compiler, le packager, ou lister tous les projets Unreal sur votre disque.
+This program lets you manage Unreal Engine projects by offering a number of functions via the command line or the graphical interface. You can display information about a project, compile it, package it, or list all the Unreal projects on your disk.
 
-## Options disponibles
 
-Le programme accepte plusieurs options à la ligne de commande. Voici les options disponibles :
+## Known issues
 
-### 1. `show-infos`
-Affiche les détails d'un projet à partir de son fichier `.uproject`.
+The `all-projects` command:
+The command seems not to find the **.uproject** from source
 
-**Exemple d'utilisation :**
+## Command line use
 
-```bash
-[chemin du exe] show-infos C:/chemin/vers/ton/projet.uproject
-```
+### Available options
 
-### 2. `build`
-Compile le projet `.uproject` avec UnrealBuildTool (UBT).
+The program accepts several command line options. Here are the available options:
 
-**Exemple d'utilisation :**
+#### 1. `show-infos`
+Displays details of a project from its `.uproject` file.
 
-```bash
-[chemin du exe] C:/chemin/vers/ton/projet.uproject build
-```
-
-### 3. `package`
-Package le projet avec Unreal Automation Tool (UAT). Il nécessite un chemin de destination en tant que troisième argument.
-
-**Exemple d'utilisation :**
+**Exemple of use**
 
 ```bash
-[chemin du exe] C:/chemin/vers/ton/projet.uproject package C:/chemin/vers/le/dossier/de/destination
+[Toolconsole.exe path] show-infos C:/path/to/your/project.uproject
 ```
 
-### 4. `all-projects`
-Liste tous les projets Unreal Engine trouvés sur le disque. Ce mode accepte un argument optionnel pour spécifier le répertoire à partir duquel commencer la recherche (par défaut, la recherche commence à `C:/`).
+#### 2. `build`
+Compiles the `.uproject` project with UnrealBuildTool (UBT).
 
-**Exemple d'utilisation :**
+**Example of use:**
 
 ```bash
-[chemin du exe] all-projects [C:/chemin/vers/le/dossier : Optionnel]
+[Toolconsole.exe path] C:/path/to/your/project.uproject build
 ```
 
-## Argument `-h`
+#### 3. `package`
+Package the project with Unreal Automation Tool (UAT). It requires a destination path as the third argument.
 
-Si vous n'êtes pas sûr de ce que vous devez faire, vous pouvez passer l'argument `-h` pour afficher l'aide.
-
-**Exemple d'utilisation :**
+**Example of use:**
 
 ```bash
-[chemin du exe] -h
+[Toolconsole.exe path] C:/path/to/your/project.uproject package C:/path/to/folder/destination
 ```
 
-### Exemple de commande complète :
+#### 4. `all-projects`
+Lists all Unreal Engine projects found on disk. This mode accepts an optional argument to specify the directory from which to start the search (by default, the search starts at `C:/`).
+
+**Example of use:**
 
 ```bash
-[chemin du exe] all-projects
+[Toolconsole.exe path] all-projects [C:/path/to/folder: Optional]
 ```
 
-### Exemple avec un chemin spécifique pour la recherche :
+### Argument `-h`
+
+If you're not sure what to do, you can pass the `-h` argument to display help.
+
+**Example of use:**
 
 ```bash
-[chemin du exe] all-projects D:/MesProjetsUnreal
+[exe path] -h
 ```
 
-## À propos du programme
 
-Le programme commence par vérifier si un argument a été passé. Si aucun argument n'est donné, il affiche l'aide.
+#### Example with a specific search path :
 
-### Fonctionnement détaillé :
+```bash
+[chemin du exe] all-projects D:/MyUnrealProject
+```
 
-1. Si le premier argument est `-h`, l'aide est affichée.
-2. Si le premier argument est `all-projects`, il lance une recherche de projets Unreal sur le disque à partir du répertoire spécifié (ou `C:/` par défaut).
-3. Si le deuxième argument est `show-infos`, il récupère et affiche les informations d'un projet.
-4. Si le deuxième argument est `build`, il compile le projet via UnrealBuildTool.
-5. Si le deuxième argument est `package`, il lance le processus de packaging du projet via Unreal Automation Tool, nécessitant un troisième argument pour la destination.
+### About the program
 
-## Bugs connus
+The program starts by checking whether an argument has been passed. If no argument has been given, it displays help.
 
-La commande `all-projects` :
-La commande semble ne pas trouver les **.uproject** from source
+#### Detailed operation :
+
+1. If the first argument is `-h`, help is displayed.
+2. If the first argument is `all-projects`, it searches the disk for Unreal projects from the specified directory (or `C:/` by default).
+3. If the second argument is `show-infos`, it retrieves and displays information about a project.
+4. If the second argument is `build`, it compiles the project via UnrealBuildTool.
+5. If the second argument is `package`, it starts the project packaging process via Unreal Automation Tool, requiring a third argument for the destination.
+
+
+
+
