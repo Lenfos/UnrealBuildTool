@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UnrealBuildTool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="350" Width="525"
+        ResizeMode="NoResize">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Unreal BuildTool" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Grid.Row="1" Grid.Column="0" x:Name="ShowInfoButton" Content="Show Infos" Margin="20" Click="ShowInfoButton_OnClick"/>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="BuildButton" Content="Build Project" Margin="20" Click="BuildButton_OnClick"/>
+        <Button Grid.Row="2" Grid.Column="0" x:Name="GetAllButton" Content="Get All Projects" Margin="20" Click="GetAllButton_OnClick"/>
+        <Button Grid.Row="2" Grid.Column="1" x:Name="PackageButton" Content="Package Projects" Margin="20" Click="PackageButton_OnClick"/>
     </Grid>
 </Window>

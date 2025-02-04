@@ -1,0 +1,36 @@
+<Window x:Class="UnrealBuildTool.GetAllProjectsPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:UnrealBuildTool"
+        mc:Ignorable="d"
+        Title="GetAllProjectsPage" Height="450" Width="800"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" TextAlignment="Center" Text="Get All Project" FontSize="32" VerticalAlignment="Center" />
+        <Button Grid.Row="0" Grid.Column="0" Content="Back" x:Name="BackButton" Click="BackButton_OnClick" Width="50" Height="30" HorizontalAlignment="Left" Margin="20 0 0 0"/>
+
+        
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Select the directory to start looking for the project : " TextWrapping="Wrap" VerticalAlignment="Center" Margin="10 0 0 0"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="DirectoryButton" MouseDoubleClick="DirectoryButton_OnMouseDown" Height="30" Margin="10 0 -10 0" Text="C:\" VerticalContentAlignment="Center"/>
+        <Button Grid.Row="1" Grid.Column="2" Margin="30" Content="Start Searching" x:Name="SearchButton" Click="SearchButton_OnClick" />
+        
+        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="Warning : Searching through the c:\ can take a few time" TextAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
+        
+        <ListBox x:Name="ProjectListBox" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="30 20">
+            
+        </ListBox>
+    </Grid>
+</Window>

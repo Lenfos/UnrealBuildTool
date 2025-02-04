@@ -27,16 +27,25 @@ static class MainClass
             if (args.Length == 2)
             {
                 string target = args[1];
-                SearchProject.GetAllProjects(target);
+                
+                List<Projects> projectsList = SearchProject.GetAllProjects(target);
+                foreach (Projects iProj in projectsList)
+                {
+                    Console.WriteLine(iProj.ToString());
+                }
                 return;
             }
-            SearchProject.GetAllProjects();
+            List<Projects> projsList = SearchProject.GetAllProjects();
+            foreach (Projects iProj in projsList)
+            {
+                Console.WriteLine(iProj.ToString());
+            }
             return;
         }
 
         switch (args[1])
         {
-            case "show-infos" : SearchProject.GetProjects(path); break;
+            case "show-infos" : Console.WriteLine(SearchProject.GetProjects(path).ToString()); break;
             case "build" : Build.UBT(path); break;
             case "package":
             {

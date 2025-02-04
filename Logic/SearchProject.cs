@@ -12,7 +12,7 @@ public class SearchProject
 
     [SuppressMessage("ReSharper.DPA", "DPA0002: Excessive memory allocations in SOH")]
     [SuppressMessage("ReSharper.DPA", "DPA0003: Excessive memory allocations in LOH", MessageId = "type: System.String; size: 434MB")]
-    public static void GetAllProjects(string path = @"c:\")
+    public static List<Projects> GetAllProjects(string path = @"c:\")
     {
         List<Projects> projects = new List<Projects>();
         
@@ -38,7 +38,7 @@ public class SearchProject
         if (string.IsNullOrEmpty(output))
         {
             Console.WriteLine("No .uproject files found.");
-            return;
+            return new List<Projects>();
         }
         
         string[] files = GetProjectPaths(output);
@@ -73,15 +73,11 @@ public class SearchProject
             
             projects.Add(proj);
         }
-
-        projects = SortProject(projects);
-        foreach (Projects iProj in projects)
-        {
-            Console.WriteLine(iProj.ToString());
-        }
+        
+        return SortProject(projects);
     }
 
-    public static void GetProjects(string path)
+    public static Projects GetProjects(string path)
     {
         Projects proj = new Projects(Path.GetFileNameWithoutExtension(path), path);
         
@@ -104,7 +100,7 @@ public class SearchProject
             }
         }
 
-        Console.WriteLine(proj.ToString());
+        return proj;
     }
 
     public static string GetProjectsName(string path)
